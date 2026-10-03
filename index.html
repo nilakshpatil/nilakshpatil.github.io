@@ -1,1 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nilaksh Patil | Portfolio</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <style>
+    /* --- CSS VARIABLES & SYSTEM RESET --- */
+    :root {
+      --bg-primary: #0a0f1d;
+      --bg-secondary: #111827;
+      --bg-card: #1f293d;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --border: #374151;
+      --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(10, 15, 29, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      padding: 8rem 1.5rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .hero-img-container {
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .headshot {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px var(--accent-glow);
+    }
+
+    .hero-content h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-info item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-card);
+    }
+
+    /* --- MAIN SECTIONS --- */
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title i {
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    /* Custom Bio / About Me Styling */
+    .custom-bio-box {
+      background-color: var(--bg-card);
+      border: 1px dashed var(--accent);
+      border-radius: 12px;
+      padding: 1.75rem;
+      color: var(--text-main);
+    }
+
+    .custom-bio-box p {
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .custom-bio-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Resume Grid & Cards */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background-color: var(--bg-card);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .card-body ul {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card-body li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Skills & Badges Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .badge {
+      background-color: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .badge-highlight {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Contact Form & Info */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-main);
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* --- RESPONSIVE DESIGN --- */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 6rem;
+        gap: 2rem;
+      }
+
+      .contact-info {
+        justify-content: center;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none; /* Can be toggled with JS mobile menu if expanded */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Nilaksh<span>Patil</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#activities">Leadership</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-img-container">
+      <!-- Headshot image referenced here -->
+      <img src="headshot.jpg" alt="Nilaksh Patil Headshot" class="headshot">
+    </div>
+    <div class="hero-content">
+      <h1>Nilaksh Patil</h1>
+      <div class="hero-subtitle">Finance Major @ Rutgers University</div>
+      <p class="hero-description">
+        Aspiring financial analyst with experience in valuation models, asynchronous deal-making environments, and financial market research.
+      </p>
+      
+      <div class="contact-info">
+        <span><i class="fa-solid fa-location-dot"></i> New Brunswick, NJ</span>
+        <span><i class="fa-solid fa-envelope"></i> nilakshpatil@gmail.com</span>
+        <span><i class="fa-solid fa-phone"></i> (412)-620-3521</span>
+      </div>
+
+      <div class="hero-actions">
+        <!-- Download button linking to resume -->
+        <a href="NilakshPatil - 2026.docx" download class="btn btn-primary">
+          <i class="fa-solid fa-download"></i> Download Resume
+        </a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- CUSTOM TEXT / ABOUT SECTION (EDITABLE AREA FOR USER) -->
+    <section id="about">
+      <h2 class="section-title"><i class="fa-solid fa-user"></i> About Me</h2>
+      <div class="custom-bio-box">
+        <!-- EDITABLE AREA: Feel free to modify or add your custom text here -->
+        <p>
+          Welcome to my portfolio! I am a Finance student at Rutgers University with a passion for investment banking, asset management, and valuation analysis. My background spans building DCF models for multi-asset class opportunities, analyzing public equity market positioning, and exploring quantitative and software development tools.
+        </p>
+        <p>
+          <em>[Space to add your personal text, personal statement, dynamic updates, or project spotlights.]</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- WORK & LEADERSHIP EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+      <div class="timeline">
+        
+        <!-- AugCap LLC -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Investment Banking Analyst</div>
+              <div class="card-subtitle">AugCap LLC &bull; Austin, TX</div>
+            </div>
+            <span class="card-date">May 2026 – Present</span>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Built DCF models across 7 live investment opportunities spanning VC, PE, real estate, and investment banking.</li>
+              <li>Tailored financial drivers and assumptions for each asset, including a real estate blind fund targeting 18% IRR.</li>
+              <li>Delivered findings asynchronously within a professional deal-making environment alongside senior principals.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Lowe's -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Cashier</div>
+              <div class="card-subtitle">Lowe's &bull; Pittsburgh, PA</div>
+            </div>
+            <span class="card-date">May 2026 – July 2026</span>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Processed high-volume customer transactions with accuracy, consistently handling $1,000+ in register sales per shift.</li>
+              <li>Served hundreds of customers per shift, resolving concerns effectively and ensuring a positive experience.</li>
+              <li>Coordinated with team members during peak hours to improve checkout flow and minimize customer wait times.</li>
+              <li>Maintained accurate cash drawer reconciliation and ensured error-free end-of-shift transaction reporting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Simcoach Games -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Apprenticeship</div>
+              <div class="card-subtitle">Simcoach Games &bull; Pittsburgh, PA</div>
+            </div>
+            <span class="card-date">June 2024 – July 2024</span>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Collaborated within a 4-person team to design and develop 2 educational game prototypes for user learning.</li>
+              <li>Built two games in Unity with Java, implementing custom animations and a custom scoring system.</li>
+              <li>Designed 100% of characters and sprites using Krita tailored for children with learning disabilities.</li>
+              <li>Conducted 2 rounds of structured playtesting and presented finalized designs to company executives.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS -->
+    <section id="education">
+      <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education & Certifications</h2>
+      <div class="grid-2">
+        
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Rutgers University</div>
+              <div class="card-subtitle">Bachelor of Science in Finance</div>
+            </div>
+            <span class="card-date">Expected 2029</span>
+          </div>
+          <div class="card-body">
+            <p><strong>GPA:</strong> 3.7 / 4.0</p>
+            <p style="margin-top: 0.5rem;"><strong>Awards:</strong> AP Scholar, Dean's List (All Semesters)</p>
+            <p style="margin-top: 0.5rem;"><strong>Relevant Coursework:</strong> Financial Accounting, Financial Management, Business Law</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Certifications & Training</div>
+          </div>
+          <div class="card-body">
+            <div class="badge-container">
+              <span class="badge badge-highlight"><i class="fa-solid fa-certificate"></i> Bloomberg Market Concepts (2025)</span>
+              <span class="badge badge-highlight"><i class="fa-solid fa-certificate"></i> Bloomberg Finance Fundamentals (2026)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACTIVITIES & INVOLVEMENT -->
+    <section id="activities">
+      <h2 class="section-title"><i class="fa-solid fa-users"></i> Leadership & Activities</h2>
+      <div class="timeline">
+        
+        <!-- Bender Trust -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Team Member</div>
+              <div class="card-subtitle">Bender Trust &bull; New Brunswick, NJ</div>
+            </div>
+            <span class="card-date">Oct 2025 – Dec 2025</span>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Conducted a comprehensive financial and valuation analysis of PSEG ($40B+), using Excel-based models.</li>
+              <li>Analyzed growth potential, risk factors, revenue trends, and PSEG's competitive market position.</li>
+              <li>Built revenue forecasts using a 6.75% CAGR and compared PSEG against 5 competitors using P/E ratios.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Road to CPA -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Accounting Mentee</div>
+              <div class="card-subtitle">Road to CPA &bull; New Brunswick, NJ</div>
+            </div>
+            <span class="card-date">Aug 2026 – Present</span>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Collaborating with a professional mentor to discover practical insights into audit and tax services.</li>
+              <li>Developing a deeper understanding of GAAP principles compliance and financial reporting rules in preparation for the CPA exam.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- South Fayette FBLA -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Treasurer</div>
+              <div class="card-subtitle">South Fayette FBLA &bull; South Fayette, PA</div>
+            </div>
+            <span class="card-date">Aug 2023 – May 2024</span>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Managed chapter finances by budgeting and tracking expenses for multiple future events and competitions.</li>
+              <li>Coordinated school-wide fundraising initiatives, successfully raising $500+ to support chapter programs.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS & INTERESTS -->
+    <section id="skills">
+      <h2 class="section-title"><i class="fa-solid fa-code"></i> Skills & Interests</h2>
+      <div class="grid-2">
+        
+        <div class="card">
+          <div class="card-title"><i class="fa-solid fa-wrench"></i> Technical & Professional Skills</div>
+          <div class="badge-container">
+            <span class="badge">DCF Valuation</span>
+            <span class="badge">Financial Modeling</span>
+            <span class="badge">GAAP Rules</span>
+            <span class="badge">Python</span>
+            <span class="badge">Java</span>
+            <span class="badge">Unity</span>
+            <span class="badge">Krita</span>
+            <span class="badge">Autodesk Maya</span>
+            <span class="badge">Public Speaking</span>
+            <span class="badge">Time Management</span>
+          </div>
+          <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+            <strong>Languages:</strong> Hindi (Conversational)
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><i class="fa-solid fa-heart"></i> Interests & Associations</div>
+          <div class="card-body" style="margin-top: 0.5rem;">
+            <p><strong>Organizations:</strong> LIBOR (Little Investment Bankers of Rutgers), TSA (Technology Student Association)</p>
+            <p style="margin-top: 0.5rem;"><strong>Personal Interests:</strong> Weight Lifting, Fragrance Collecting, Pickleball, Marvel (Iron Man), Soccer (Real Madrid), Traveling</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <h2 class="section-title"><i class="fa-solid fa-paper-plane"></i> Contact Me</h2>
+      <div class="contact-grid">
+        <div>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+            Feel free to reach out for opportunities, networking, or general queries.
+          </p>
+          <p style="margin-bottom: 0.5rem;"><i class="fa-solid fa-envelope" style="color:var(--accent);"></i> nilakshpatil@gmail.com</p>
+          <p style="margin-bottom: 0.5rem;"><i class="fa-solid fa-phone" style="color:var(--accent);"></i> (412)-620-3521</p>
+          <p><i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> New Brunswick, NJ</p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Message feature ready! Hook this up to your preferred backend or email service.');">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" placeholder="Your Message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Nilaksh Patil. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
